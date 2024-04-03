@@ -45,7 +45,7 @@ public class BoundedNumber
         Value = value;
     }
 
-    #region Operators
+    #region Arithmetic Operators
 
     public static implicit operator float(BoundedNumber number)
     {
@@ -76,6 +76,12 @@ public class BoundedNumber
         return result;
     }
 
+    public static BoundedNumber operator %(BoundedNumber number, float value)
+    {
+        var result = new BoundedNumber(number.Value % value, number.Min, number.Max);
+        return result;
+    }
+
     public static BoundedNumber operator ++(BoundedNumber number)
     {
         number.Value++;
@@ -86,6 +92,40 @@ public class BoundedNumber
     {
         number.Value--;
         return number;
+    }
+
+    #endregion
+
+    #region Relational Operators
+
+    public static bool operator ==(BoundedNumber a, BoundedNumber b)
+    {
+        return a.Value == b.Value;
+    }
+
+    public static bool operator !=(BoundedNumber a, BoundedNumber b)
+    {
+        return a.Value != b.Value;
+    }
+
+    public static bool operator >(BoundedNumber a, BoundedNumber b)
+    {
+        return a.Value > b.Value;
+    }
+
+    public static bool operator >=(BoundedNumber a, BoundedNumber b)
+    {
+        return a.Value >= b.Value;
+    }
+
+    public static bool operator <(BoundedNumber a, BoundedNumber b)
+    {
+        return a.Value < b.Value;
+    }
+
+    public static bool operator <=(BoundedNumber a, BoundedNumber b)
+    {
+        return a.Value <= b.Value;
     }
 
     #endregion
