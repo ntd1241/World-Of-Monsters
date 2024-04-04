@@ -36,7 +36,7 @@ public class BoundedNumber
         }
     }
 
-    public BoundedNumber(float value, float min, float max)
+    public BoundedNumber(float value, float min=float.MinValue, float max = float.MaxValue)
     {
         if (min > max) throw new ArgumentException();
 
@@ -128,5 +128,22 @@ public class BoundedNumber
         return a.Value <= b.Value;
     }
 
+    public override bool Equals(object obj)
+    {
+        if (obj == null) return false;
+        BoundedNumber number = obj as BoundedNumber;
+        return Value == number.Value;
+    }
+
     #endregion
+
+    public override int GetHashCode()
+    {
+        return Value.GetHashCode();
+    }
+
+    public override string ToString()
+    {
+        return Value.ToString();
+    }
 }
