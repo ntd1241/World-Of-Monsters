@@ -2,12 +2,12 @@ using UnityEngine;
 
 public interface IMoveable
 {
-    public float BaseSpeed { get; set; }
-    public Vector2 Movement { get; set; }
+    public MultipleSourcesNumber BaseSpeed { get; set; }
+    public Vector2 Direction { get; set; }
     public Rigidbody2D RB { get; }
     public Vector2 Velocity
     {
-        get => Movement.normalized * BaseSpeed;
+        get => Direction.normalized * BaseSpeed;
     }
 
     public float Speed //Actual speed

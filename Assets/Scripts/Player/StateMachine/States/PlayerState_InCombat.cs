@@ -5,8 +5,9 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "InCombat", menuName = "State Machine/Player/InCombat")]
 public class PlayerState_InCombat : State
-{
+{   
     Player player;
+    IMoveable movement;
 
     public override void Initialize()
     {
@@ -14,7 +15,7 @@ public class PlayerState_InCombat : State
 
         player = machine.GetComponent<Player>();
 
-        ((IMoveableAdvanced)player).BaseSpeed = 5f;
+        movement = (IMoveable)player;
     }
 
     public override void Update()
@@ -24,15 +25,17 @@ public class PlayerState_InCombat : State
         var x = Input.GetAxisRaw("Horizontal");
         var y = Input.GetAxisRaw("Vertical");
 
-        player.Movement = new Vector2(x, y);
+        movement.Direction = new Vector2(x, y);
 
-        ((IMoveableAdvanced)player).IUpdate();
+        movement.IUpdate();
+
+        player.animator.SetBool("isMoving", (movement.Velocity != Vector2.zero));
     }
 
     public override void FixedUpdate()
     {
         base.FixedUpdate();
 
-        ((IMoveableAdvanced)player).IFixedUpdate();
+        movement.IFixedUpdate();
     }
 }

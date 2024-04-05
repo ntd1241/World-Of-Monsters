@@ -3,19 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IMoveableAdvanced
+public class Player : Mob, IMoveable 
 {
     #region IMoveable
 
-    public float baseSpeed = 5f;
+    public PlayerData playerData;
+
     public Rigidbody2D rb;
     public Transform spriteTransform;
     public bool faceToRightAsDefault = true;
+    public Animator animator;
 
-    public float BaseSpeed
+    public MultipleSourcesNumber BaseSpeed
     {
-        get => baseSpeed;
-        set => baseSpeed = value;
+        get => playerData.Speed;
+        set => playerData.Speed = value;
     }
     public Rigidbody2D RB
     {
@@ -25,7 +27,7 @@ public class Player : MonoBehaviour, IMoveableAdvanced
     {
         get => spriteTransform;
     }
-    public Vector2 Movement { get; set; }
+    public Vector2 Direction { get; set; }
     public bool FaceToRightAsDefault
     {
         get => faceToRightAsDefault;
