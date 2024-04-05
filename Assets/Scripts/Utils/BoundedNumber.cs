@@ -45,12 +45,12 @@ public class BoundedNumber
         Value = value;
     }
 
-    #region Arithmetic Operators
-
     public static implicit operator float(BoundedNumber number)
     {
         return number.Value;
     }
+
+    #region Arithmetic Operators
 
     public static BoundedNumber operator +(BoundedNumber number, float value)
     {
