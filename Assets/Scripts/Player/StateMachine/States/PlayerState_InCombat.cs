@@ -29,6 +29,8 @@ public class PlayerState_InCombat : State
 
         movement.IUpdate();
 
+        Debug.Log(movement.Speed);
+
         player.animator.SetBool("isMoving", (movement.Velocity != Vector2.zero));
     }
 

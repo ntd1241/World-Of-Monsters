@@ -1,24 +1,25 @@
-using SerializeReferenceEditor.Demo;
+using AYellowpaper.SerializedCollections;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//Mob is a MonoBehavior object affected by effects
+//Mob is a MonoBehavior object affected by effects, can handle attachable objects and has stats
 public class Mob : MonoBehaviour
 {
-    [SerializeReference]
-    [SRDemo(typeof(Effect))]
+    [SerializedDictionary("Stat", "Value")]
+    public SerializedDictionary<CombatStat, MultipleSourcesNumber> combatStats = new();
+
     public List<Effect> effects = new List<Effect>();
 
     protected virtual void Awake()
     {
         foreach (var effect in effects)
         {
-            effect.Mob = this;
+            effect.Holder = this;
         }
     }
     
-    protected virtual void Start()
+    protected virtual void Start() 
     {
         foreach (var effect in effects)
         {

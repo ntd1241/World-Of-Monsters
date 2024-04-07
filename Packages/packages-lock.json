@@ -1,11 +1,11 @@
 {
   "dependencies": {
-    "com.elmortem.serializereferenceeditor": {
-      "version": "https://github.com/elmortem/serializereferenceeditor.git",
+    "com.mackysoft.serializereference-extensions": {
+      "version": "https://github.com/mackysoft/Unity-SerializeReferenceExtensions.git?path=Assets/MackySoft/MackySoft.SerializeReferenceExtensions",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "8c18df8ae83229dae5f3005f4450486c14a3eecb"
+      "hash": "69f6e31cf1482afc03685dd71d63daecbc37a565"
     },
     "com.unity.2d.animation": {
       "version": "9.1.0",

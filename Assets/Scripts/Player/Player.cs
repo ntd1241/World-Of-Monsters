@@ -16,9 +16,10 @@ public class Player : Mob, IMoveable
 
     public MultipleSourcesNumber BaseSpeed
     {
-        get => playerData.Speed;
-        set => playerData.Speed = value;
+        get => playerData.combatStats[CombatStat.Speed];
+        set => playerData.combatStats[CombatStat.Speed] = value;
     }
+
     public Rigidbody2D RB
     {
         get => rb;
